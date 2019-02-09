@@ -77,6 +77,30 @@ $('#touchmotion').on('click', function(e){
 
 setInterval(pubMotorValues,100);
 
-document.getElementById('camstream').data = 'http://'
+/*document.getElementById('camstream').data = 'http://'
     + location.hostname
     + ':10000/stream?topic=/cv_camera_node/image_raw';
+*/
+
+var imageNr = 0;
+var finished = new Array();
+
+function createImageLayer() {
+    var img = new Image();
+    img.style.position = "absolute";
+    img.style.zIndex = -1;
+    img.onload = imageOnload;
+    img.src = "http://" + location.hostname + ":10000/stream?topic=/cv_camera_node/image_raw";
+    var webcam = document.getElementById("webcam");
+    webcam.insertBefore(img, webcam.firstChild);
+}
+
+function imageOnload() {
+    this.style.zIndex = imageNr;
+    while (1 < finished.length) {
+	var del = finished.shift();
+	del.parentNode.removeChild(del);
+    }
+    finished.push(this);
+    createImageLayer();
+}
