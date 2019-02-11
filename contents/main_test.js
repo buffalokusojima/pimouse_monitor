@@ -1,5 +1,4 @@
 var ros = new ROSLIB.Ros({ url : 'ws://' + location.hostname + ':9000' });
-
 ros.on('connection', function() {console.log('websocket: connected'); });
 ros.on('error', function(error) {console.log('websocket error: ', error); });
 ros.on('close', function() {console.log('websocket: closed');});
@@ -103,18 +102,18 @@ function imageOnload() {
 document.addEventListener('touchmove', function(e) {e.preventDefault();}, {passive: false});
 
 var touchArea = document.getElementById('touchArea');
-var touchAreaX = touchArea.clientWidth;
-var touchAreaY = touchArea.clientHeight;
+var touchAreaX = screen.width;
+var touchAreaY = screen.height;
 var MOVE_AREA_X_MAX = touchAreaX * 0.4;
 var CAMERA_AREA_X_MIN = touchAreaX * 0.6;
-var TOUCH_AREA_Y = touchAreaY - touchAreaY * 0.6;
+var TOUCH_AREA_Y = touchAreaY * 0.6;
 
 window.addEventListener("orientationchange", function(){
-    touchAreaX = touchArea.clientWidth;
-    touchAreaY = touchArea.clientHeight;
+    touchAreaX = screen.width;
+    touchAreaY = screen.height;
     MOVE_AREA_X_MIX = touchAreaX * 0.4;
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
-    TOUCH_AREA_Y = touchAreaY - touchAreaY * 0.6;
+    TOUCH_AREA_Y = touchAreaY * 0.6;
 });
 
 touchArea.addEventListener('touchstart', function(event){
@@ -143,7 +142,7 @@ touchArea.addEventListener('touchmove',function(event){
 	var fw = 0;
 	var rot = 0;
 
-	if(x > 0 && x < MOVE_AREA_X_MAX){
+	if(x > 0 && x < MOVE_AREA_X_MAX && TOUCH_AREA_Y < y){
 	    console.log("moveAreaMoving");
 	    document.getElementById('testLeft').style.backgroundColor = 'red';
 	    fw = touchAreaY - (y - touchAreaY);
