@@ -39,7 +39,7 @@ $('#motor_off').on('click', function(e){
 	    $('#motor_off').attr('class','btn btn-primary');
 	}
     });
-});**/
+});
 
 var vel = new ROSLIB.Topic({
     ros : ros,
@@ -160,7 +160,7 @@ touchArea.addEventListener('touchmove',function(event){
 
     console.log("send Data  fw:"+fw+" rot:"+rot);
     
-    v = new ROSLIB.Message({linear:{x:fw,y:0,z:0}, angular:{x:0,y:0,z:rot}});
+    var v = new ROSLIB.Message({linear:{x:fw,y:0,z:0}, angular:{x:0,y:0,z:rot}});
     vel.publish(v);
 });
 
@@ -168,4 +168,7 @@ touchArea.addEventListener('touchend',function(event){
     console.log("moveAreaTouched");
     document.getElementById('testRight').style.backgroundColor = 'white';
     document.getElementById('testLeft').style.backgroundColor = 'white';
+
+    var v = new ROSLIB.Message({linear:{x:0,y:0,z:0}, angular:{x:0,y:0,z:0}});
+    vel.publish(v);
 })
