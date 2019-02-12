@@ -107,6 +107,7 @@ var touchAreaY = screen.height;
 var MOVE_AREA_X_MAX = touchAreaX * 0.4;
 var CAMERA_AREA_X_MIN = touchAreaX * 0.6;
 var TOUCH_AREA_Y = touchAreaY * 0.6;
+var TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
 
 window.addEventListener("orientationchange", function(){
     touchAreaX = screen.width;
@@ -114,6 +115,7 @@ window.addEventListener("orientationchange", function(){
     MOVE_AREA_X_MIX = touchAreaX * 0.4;
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
+    TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
 });
 
 touchArea.addEventListener('touchstart', function(event){
@@ -145,7 +147,7 @@ touchArea.addEventListener('touchmove',function(event){
 	if(x > 0 && x < MOVE_AREA_X_MAX && TOUCH_AREA_Y < y){
 	    console.log("moveAreaMoving");
 	    document.getElementById('testLeft').style.backgroundColor = 'red';
-	    fw = touchAreaY - (y - touchAreaY);
+	    fw = TOUCH_AREA_MIDDLE_Y - y;
 	    rot = MOVE_AREA_X_MAX - x;
 	    console.log("raw data    fw:"+fw+" rot:"+rot);
 	}
