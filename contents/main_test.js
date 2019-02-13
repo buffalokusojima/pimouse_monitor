@@ -40,7 +40,7 @@ $('#motor_off').on('click', function(e){
 	}
     });
 });
-
+*/
 var vel = new ROSLIB.Topic({
     ros : ros,
     name : '/cmd_vel',
