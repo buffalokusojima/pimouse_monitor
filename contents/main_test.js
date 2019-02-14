@@ -109,6 +109,7 @@ var CAMERA_AREA_X_MIN = touchAreaX * 0.6;
 var TOUCH_AREA_Y = touchAreaY * 0.6;
 var TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
 
+// show px of x and y when iphone laid
 window.addEventListener("orientationchange", function(){
     touchAreaX = screen.width;
     touchAreaY = screen.height;
@@ -116,6 +117,7 @@ window.addEventListener("orientationchange", function(){
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
     TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
+    document.getElementById('testLeft').innerText = touchAreaX + "," + touchAreaY;
 });
 
 touchArea.addEventListener('touchstart', function(event){
@@ -144,7 +146,8 @@ touchArea.addEventListener('touchmove',function(event){
 	var fw = 0;
 	var rot = 0;
 
-	if(x > 0 && x < MOVE_AREA_X_MAX && TOUCH_AREA_Y < y){
+    //need to think about under the max of the below
+	if(x > 0 && x < MOVE_AREA_X_MAX && TOUCH_AREA_Y < y && y < touchAreaY){
 	    console.log("moveAreaMoving");
 	    document.getElementById('testLeft').style.backgroundColor = 'red';
 	    fw = TOUCH_AREA_MIDDLE_Y - y;
@@ -152,7 +155,7 @@ touchArea.addEventListener('touchmove',function(event){
 	    console.log("raw data    fw:"+fw+" rot:"+rot);
 	}
 
-	if(x > CAMERA_AREA_X_MIN && x < touchAreaX){
+	if(x > CAMERA_AREA_X_MIN && x < touchAreaX && TOUCH_AREA_Y < y && y < touchAreaY){
 	    console.log("cameraAreaMoving");
 	    document.getElementById('testRight').style.backgroundColor = 'green';
 	}
