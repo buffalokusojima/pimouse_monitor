@@ -117,7 +117,7 @@ window.addEventListener("orientationchange", function(){
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
     TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
-    
+    document.getElementById('testLeft').innerText = "laid";
 });
 
 touchArea.addEventListener('touchstart', function(event){
