@@ -163,7 +163,7 @@ touchArea.addEventListener('touchmove',function(event){
     fw = parseInt(fw)*0.001;
     rot = 3.141592*parseInt(rot)/180;
 
-    document.getElementById('testRight').innerText("send Data  fw:"+fw+" rot:"+rot);
+    document.getElementById('testRight').innerText = "send Data  fw:"+fw+" rot:"+rot;
     
     var v = new ROSLIB.Message({linear:{x:fw,y:0,z:0}, angular:{x:0,y:0,z:rot}});
     vel.publish(v);
