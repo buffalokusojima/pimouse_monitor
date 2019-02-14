@@ -149,7 +149,8 @@ touchArea.addEventListener('touchmove',function(event){
     //need to think about under the max of the below
 	if(x > 0 && x < MOVE_AREA_X_MAX && TOUCH_AREA_Y < y && y < touchAreaY){
 	    console.log("moveAreaMoving");
-	    document.getElementById('testLeft').style.backgroundColor = 'red';
+        document.getElementById('testLeft').style.backgroundColor = 'red';
+        document.getElementById('testLeft').innerText = x+","+y;
 	    fw = TOUCH_AREA_MIDDLE_Y - y;
 	    //rot = MOVE_AREA_X_MAX - x;
 	    console.log("raw data    fw:"+fw+" rot:"+rot);
