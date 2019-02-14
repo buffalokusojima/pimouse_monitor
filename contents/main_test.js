@@ -142,7 +142,8 @@ touchArea.addEventListener('touchmove',function(event){
     for(var i=0; i<event.touches.length; i++){
 	console.log(event.touches[i].pageX+","+event.touches[i].pageY);
 	var x = event.touches[i].pageX;
-	var y = event.touches[i].pageY;
+    var y = event.touches[i].pageY;
+    document.getElementById('testLeft').innerText = x+","+y;
 	var fw = 0;
 	var rot = 0;
 
@@ -150,7 +151,7 @@ touchArea.addEventListener('touchmove',function(event){
 	if(x > 0 && x < MOVE_AREA_X_MAX && TOUCH_AREA_Y < y && y < touchAreaY){
 	    console.log("moveAreaMoving");
         document.getElementById('testLeft').style.backgroundColor = 'red';
-        document.getElementById('testLeft').innerText = x+","+y;
+        
 	    fw = TOUCH_AREA_MIDDLE_Y - y;
 	    //rot = MOVE_AREA_X_MAX - x;
 	    console.log("raw data    fw:"+fw+" rot:"+rot);
