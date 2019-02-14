@@ -117,7 +117,7 @@ window.addEventListener("orientationchange", function(){
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
     TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
-    document.getElementById('testLeft').innerText = touchAreaX + "," + touchAreaY;
+    
 });
 
 touchArea.addEventListener('touchstart', function(event){
@@ -151,7 +151,7 @@ touchArea.addEventListener('touchmove',function(event){
 	    console.log("moveAreaMoving");
 	    document.getElementById('testLeft').style.backgroundColor = 'red';
 	    fw = TOUCH_AREA_MIDDLE_Y - y;
-	    rot = MOVE_AREA_X_MAX - x;
+	    //rot = MOVE_AREA_X_MAX - x;
 	    console.log("raw data    fw:"+fw+" rot:"+rot);
 	}
 
@@ -163,7 +163,7 @@ touchArea.addEventListener('touchmove',function(event){
     fw = parseInt(fw)*0.001;
     rot = 3.141592*parseInt(rot)/180;
 
-    console.log("send Data  fw:"+fw+" rot:"+rot);
+    document.getElementById('testRight').innerText("send Data  fw:"+fw+" rot:"+rot);
     
     var v = new ROSLIB.Message({linear:{x:fw,y:0,z:0}, angular:{x:0,y:0,z:rot}});
     vel.publish(v);
