@@ -143,7 +143,7 @@ touchArea.addEventListener('touchmove',function(event){
 	console.log(event.touches[i].pageX+","+event.touches[i].pageY);
 	var x = event.touches[i].pageX;
     var y = event.touches[i].pageY;
-    document.getElementById('testLeft').innerText = x+","+y;
+    document.getElementById('testLeft').innerText = x+","+y+"<br>"+touchAreaX+","+touchAreaY;
 	var fw = 0;
 	var rot = 0;
 
