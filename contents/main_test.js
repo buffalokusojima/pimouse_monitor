@@ -114,6 +114,7 @@ var TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
 
 // show px of x and y when iphone laid
 window.addEventListener("orientationchange", function(){
+    touchAreaRect = touchArea.getBoundingClientRect();
     touchAreaX = touchAreaRect.width;
     touchAreaY = touchAreaRect.top;
     MOVE_AREA_X_MIX = touchAreaX * 0.4;
