@@ -103,10 +103,10 @@ function imageOnload() {
 document.addEventListener('touchmove', function(e) {e.preventDefault();}, {passive: false});
 
 var touchArea = document.getElementById('touchArea');
-touchArea = touchArea.getBoundingClientRect();
-console.log(touchArea.width+","+touchArea.top);
-var touchAreaX = touchArea.width;
-var touchAreaY = touchArea.top;
+var touchAreaRect = touchArea.getBoundingClientRect();
+console.log(touchAreaRect.width+","+touchAreaRect.top);
+var touchAreaX = touchAreaRect.width;
+var touchAreaY = touchAreaRect.top;
 var MOVE_AREA_X_MAX = touchAreaX * 0.4;
 var CAMERA_AREA_X_MIN = touchAreaX * 0.6;
 var TOUCH_AREA_Y = touchAreaY * 0.6;
@@ -114,8 +114,8 @@ var TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
 
 // show px of x and y when iphone laid
 window.addEventListener("orientationchange", function(){
-    touchAreaX = touchArea.width;
-    touchAreaY = touchArea.top;
+    touchAreaX = touchAreaRect.width;
+    touchAreaY = touchAreaRect.top;
     MOVE_AREA_X_MIX = touchAreaX * 0.4;
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
