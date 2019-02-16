@@ -162,7 +162,9 @@ touchArea.addEventListener('touchmove',function(event){
 	}
 
 	if(x > CAMERA_AREA_X_MIN && x < touchAreaX && TOUCH_AREA_Y < y && y < touchAreaY){
-	    console.log("cameraAreaMoving");
+        console.log("cameraAreaMoving");
+        fw = TOUCH_AREA_MIDDLE_Y - y;
+        rot = MOVE_AREA_X_MAX - x;
 	    document.getElementById('testRight').style.backgroundColor = 'green';
 	}
     }
