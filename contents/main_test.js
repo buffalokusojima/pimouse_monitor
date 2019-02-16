@@ -1,3 +1,4 @@
+
 var ros = new ROSLIB.Ros({ url : 'ws://' + location.hostname + ':9000' });
 ros.on('connection', function() {console.log('websocket: connected'); });
 ros.on('error', function(error) {console.log('websocket error: ', error); });
@@ -102,8 +103,8 @@ function imageOnload() {
 document.addEventListener('touchmove', function(e) {e.preventDefault();}, {passive: false});
 
 var touchArea = document.getElementById('touchArea');
-var touchAreaX = screen.width;
-var touchAreaY = screen.height;
+var touchAreaX = window.width;
+var touchAreaY = window.height;
 var MOVE_AREA_X_MAX = touchAreaX * 0.4;
 var CAMERA_AREA_X_MIN = touchAreaX * 0.6;
 var TOUCH_AREA_Y = touchAreaY * 0.6;
@@ -111,8 +112,8 @@ var TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
 
 // show px of x and y when iphone laid
 window.addEventListener("orientationchange", function(){
-    touchAreaX = screen.width;
-    touchAreaY = screen.height;
+    touchAreaX = window.width;
+    touchAreaY = window.height;
     MOVE_AREA_X_MIX = touchAreaX * 0.4;
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
