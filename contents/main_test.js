@@ -104,9 +104,9 @@ document.addEventListener('touchmove', function(e) {e.preventDefault();}, {passi
 
 var touchArea = document.getElementById('touchArea');
 var touchAreaRect = touchArea.getBoundingClientRect();
-console.log(touchAreaRect.width+","+touchAreaRect.top);
+
 var touchAreaX = touchAreaRect.width;
-var touchAreaY = touchAreaRect.top;
+var touchAreaY = touchAreaRect.top + touchAreaRect.height;
 var MOVE_AREA_X_MAX = touchAreaX * 0.4;
 var CAMERA_AREA_X_MIN = touchAreaX * 0.6;
 var TOUCH_AREA_Y = touchAreaY * 0.6;
@@ -116,7 +116,7 @@ var TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
 window.addEventListener("orientationchange", function(){
     touchAreaRect = touchArea.getBoundingClientRect();
     touchAreaX = touchAreaRect.width;
-    touchAreaY = touchAreaRect.top;
+    touchAreaY = touchAreaRect.top + touchAreaRect.height;
     MOVE_AREA_X_MIX = touchAreaX * 0.4;
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
