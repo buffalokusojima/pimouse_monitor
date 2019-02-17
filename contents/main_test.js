@@ -121,6 +121,8 @@ window.addEventListener("orientationchange", function(){
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
     TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
+    var fw=0;
+    var rot=0;
     document.getElementById('testLeft').innerText = "laid,"+touchAreaX+","+touchAreaY;
 });
 
@@ -148,8 +150,6 @@ touchArea.addEventListener('touchmove',function(event){
 	var x = event.touches[i].pageX;
     var y = event.touches[i].pageY;
     document.getElementById('testLeft').innerText = x+","+y+"<br>"+touchAreaX+","+touchAreaY;
-	var fw = 0;
-	var rot = 0;
 
     //need to think about under the max of the below
 	if(x > 0 && x < MOVE_AREA_X_MAX && TOUCH_AREA_Y < y && y < touchAreaY){
@@ -163,7 +163,7 @@ touchArea.addEventListener('touchmove',function(event){
 
 	if(x > CAMERA_AREA_X_MIN && x < touchAreaX && TOUCH_AREA_Y < y && y < touchAreaY){
         console.log("cameraAreaMoving");
-        fw = TOUCH_AREA_MIDDLE_Y - y;
+        
         rot = 90;
 	    document.getElementById('testRight').style.backgroundColor = 'green';
 	}
@@ -181,7 +181,8 @@ touchArea.addEventListener('touchend',function(event){
     console.log("moveAreaTouched");
     document.getElementById('testRight').style.backgroundColor = 'white';
     document.getElementById('testLeft').style.backgroundColor = 'white';
-
+    fw = 0;
+    rot = 0;
     var v = new ROSLIB.Message({linear:{x:0,y:0,z:0}, angular:{x:0,y:0,z:0}});
     vel.publish(v);
 })
