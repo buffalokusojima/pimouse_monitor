@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Pimouse Monitor</title>
+  </head>
+  <body>
+    
+    <div class="container">
+        <label>fw:</label>
+        <input type="text" id="linear_x" />
+        <input type="text" id="linear_y" />
+        <input type="text" id="linear_z"/>
+
+        <label>rot:</label>
+        <input type="text" id="angular_x"/>
+        <input type="text" id="angular_y"/>
+        <input type="text" id="angular_z"/>
+
+        <button value="submit" onclick="submit();"></button>
+        </div>
+
+    <script src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    <script src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+    <script src="param_test.js"></script>
+  </body>
+</html>
+
