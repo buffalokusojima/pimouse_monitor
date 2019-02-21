@@ -167,11 +167,11 @@ touchArea.addEventListener('touchmove',function(event){
 
 	if(x > CAMERA_AREA_X_MIN && x < touchAreaX && TOUCH_AREA_Y < y && y < touchAreaY){
         console.log("cameraAreaMoving");
-        if(x <CAMERA_AREA_X_MIDDLE){
-        rot = -90;   
+        if(x < CAMERA_AREA_X_MIDDLE){
+        rot = 90;   
         }
         else{
-            rot = 90;
+            rot = -90;
         }
 	    document.getElementById('testRight').style.backgroundColor = 'green';
 	}
