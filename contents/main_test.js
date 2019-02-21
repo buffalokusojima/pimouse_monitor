@@ -168,7 +168,7 @@ touchArea.addEventListener('touchmove',function(event){
 	    document.getElementById('testRight').style.backgroundColor = 'green';
 	}
     }
-    fw = parseInt(fw)*0.001;
+    fw = parseInt(fw)*0.01;
     rot = 3.141592*parseInt(rot)/180;
 
     document.getElementById('testRight').innerText = "send Data  fw:"+fw+" rot:"+rot;
