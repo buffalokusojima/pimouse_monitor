@@ -109,9 +109,13 @@ var touchAreaX = touchAreaRect.width;
 var touchAreaY = touchAreaRect.top + touchAreaRect.height;
 var MOVE_AREA_X_MAX = touchAreaX * 0.4;
 var CAMERA_AREA_X_MIN = touchAreaX * 0.6;
-var CAMERA_AREA_X_MIDDLE = CAMERA_AREA_X_MIN + (touchAreaX - CAMERA_AREA_X_MIN)/2; 
+var CAMERA_AREA_X_MIDDLE = CAMERA_AREA_X_MIN + (touchAreaX - CAMERA_AREA_X_MIN)/2;
 var TOUCH_AREA_Y = touchAreaY * 0.6;
 var TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
+var MOVE_AREA_SPEED_LOW_MIN = TOUCH_AREA_MIDDLE_Y - (TOUCH_AREA_MIDDLE_Y - TOUCH_AREA_Y)/2;
+var MOVE_AREA_SPEED_LOW_MAX = touchAreaY - (touchAreaY - TOUCH_AREA_MIDDLE_Y)/2;
+var CAMERA_AREA_SPEED_LOW_MIN = CAMERA_AREA_X_MIDDLE - (CAMERA_AREA_X_MIDDLE - CAMERA_AREA_X_MIN)/2;
+var CAMERA_AREA_SPEED_LOW_MAX = touchAreaX - (touchAreaX - CAMERA_AREA_X_MIDDLE)/2;
 var fw=0;
 var rot=0;
 
@@ -124,9 +128,11 @@ window.addEventListener("orientationchange", function(){
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
     TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
-    MOVE_AREA_SPEED_WALK_MIN = TOUCH_AREA_MIDDLE_Y - (TOUCH_AREA_MIDDLE_Y - TOUCH_AREA_Y)/2;
-    MOVE_AREA_SPEED_WALK_MAX = touchAreaY - (touchAreaY - TOUCH_AREA_MIDDLE_Y)/2;
-    CAMERA_AREA_X_MIDDLE = CAMERA_AREA_X_MIN + (touchAreaX - CAMERA_AREA_X_MIN)/2; 
+    MOVE_AREA_SPEED_LOW_MIN = TOUCH_AREA_MIDDLE_Y - (TOUCH_AREA_MIDDLE_Y - TOUCH_AREA_Y)/2;
+    MOVE_AREA_SPEED_LOW_MAX = touchAreaY - (touchAreaY - TOUCH_AREA_MIDDLE_Y)/2;
+    CAMERA_AREA_X_MIDDLE = CAMERA_AREA_X_MIN + (touchAreaX - CAMERA_AREA_X_MIN)/2;
+    CAMERA_AREA_SPEED_LOW_MIN = CAMERA_AREA_X_MIDDLE - (CAMERA_AREA_X_MIDDLE - CAMERA_AREA_X_MIN)/2;
+    CAMERA_AREA_SPEED_LOW_MAX = touchAreaX - (touchAreaX - CAMERA_AREA_X_MIDDLE)/2;
     fw=0;
     rot=0;
     document.getElementById('testLeft').innerText = "laid,"+touchAreaX+","+touchAreaY;
@@ -162,7 +168,7 @@ touchArea.addEventListener('touchmove',function(event){
 	    console.log("moveAreaMoving");
         document.getElementById('testLeft').style.backgroundColor = 'red';
         
-        if(MOVE_AREA_SPEED_WALK_MIN < y && y < TOUCH_AREA_MIDDLE_Y){
+        if(MOVE_AREA_SPEED_LOW_MIN < y && y < TOUCH_AREA_MIDDLE_Y){
             fw = 30;
         }else if(TOUCH_AREA_MIDDLE_Y < y && y < MOVE_AREA_X_MAX){
             fw = -30;
@@ -179,11 +185,14 @@ touchArea.addEventListener('touchmove',function(event){
 
 	if(x > CAMERA_AREA_X_MIN && x < touchAreaX && TOUCH_AREA_Y < y && y < touchAreaY){
         console.log("cameraAreaMoving");
-        if(x < CAMERA_AREA_X_MIDDLE){
-        rot = 90;   
-        }
-        else{
+        if(CAMERA_AREA_SPEED_LOW_MIN < x && x < CAMERA_AREA_X_MIDDLE){
+            rot = 90;   
+        }else if(CAMERA_AREA_X_MIDDLE < x && x < CAMERA_AREA_SPEED_LOW_MAX){
             rot = -90;
+        }else if(x < CAMERA_AREA_SPEED_LOW_MIN){
+            rot = 180;
+        }else if(CAMERA_AREA_SPEED_LOW_MAX < x){
+            rot = -180;
         }
 	    document.getElementById('testRight').style.backgroundColor = 'green';
 	}
