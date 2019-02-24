@@ -70,12 +70,12 @@ $('#touchmotion').on('click', function(e){
 });
 
 setInterval(pubMotorValues,100);
-
-/*document.getElementById('camstream').data = 'http://'                                                                                                                                          
+*/
+document.getElementById('camstream').data = 'http://'                                                                                                                                          
     + location.hostname                                                                                                                                                                          
     + ':10000/stream?topic=/cv_camera_node/image_raw';                                                                                                                                           
-*/
 
+/*
 var imageNr = 0;
 var finished = new Array();
 
@@ -97,7 +97,7 @@ function imageOnload() {
     }
     finished.push(this);
     createImageLayer();
-}
+}*/
 
 //scrole forbitten
 document.addEventListener('touchmove', function(e) {e.preventDefault();}, {passive: false});
