@@ -163,13 +163,13 @@ touchArea.addEventListener('touchmove',function(event){
         document.getElementById('testLeft').style.backgroundColor = 'red';
         
         if(MOVE_AREA_SPEED_WALK_MIN < y && y < TOUCH_AREA_MIDDLE_Y){
-            fw = 50;
+            fw = 30;
         }else if(TOUCH_AREA_MIDDLE_Y < y && y < MOVE_AREA_X_MAX){
-            fw = -50;
+            fw = -30;
         }else if(y < MOVE_AREA_X_MIX){
-            fw = 100;
+            fw = 50;
         }else if(MOVE_AREA_X_MAX < y){
-            fw = -100;
+            fw = -50;
         }
 
 	    //fw = TOUCH_AREA_MIDDLE_Y - y;
