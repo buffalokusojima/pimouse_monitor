@@ -124,6 +124,8 @@ window.addEventListener("orientationchange", function(){
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
     TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
+    MOVE_AREA_SPEED_WALK_MIN = TOUCH_AREA_MIDDLE_Y - (TOUCH_AREA_MIDDLE_Y - TOUCH_AREA_Y)/2;
+    MOVE_AREA_SPEED_WALK_MAX = touchAreaY - (touchAreaY - TOUCH_AREA_MIDDLE_Y)/2;
     CAMERA_AREA_X_MIDDLE = CAMERA_AREA_X_MIN + (touchAreaX - CAMERA_AREA_X_MIN)/2; 
     fw=0;
     rot=0;
@@ -160,7 +162,17 @@ touchArea.addEventListener('touchmove',function(event){
 	    console.log("moveAreaMoving");
         document.getElementById('testLeft').style.backgroundColor = 'red';
         
-	    fw = TOUCH_AREA_MIDDLE_Y - y;
+        if(MOVE_AREA_SPEED_WALK_MIN < y && y < TOUCH_AREA_MIDDLE_Y){
+            fw = 10;
+        }else if(TOUCH_AREA_MIDDLE_Y < y && y < MOVE_AREA_X_MAX){
+            fw = -10;
+        }else if(y < MOVE_AREA_X_MIX){
+            fw = 20;
+        }else if(MOVE_AREA_X_MAX < y){
+            fw = -20;
+        }
+
+	    //fw = TOUCH_AREA_MIDDLE_Y - y;
 	    //rot = MOVE_AREA_X_MAX - x;
 	    console.log("raw data    fw:"+fw+" rot:"+rot);
 	}
