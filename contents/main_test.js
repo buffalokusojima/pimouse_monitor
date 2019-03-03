@@ -103,7 +103,6 @@ function imageOnload() {
 document.addEventListener('touchmove', function(e) {e.preventDefault();}, {passive: false});
 
 var touchArea = document.getElementById('touchArea');
-var camArea = document.getElementById('camstream');
 
 var touchAreaRect = touchArea.getBoundingClientRect();
 
@@ -217,7 +216,3 @@ touchArea.addEventListener('touchend',function(event){
     var v = new ROSLIB.Message({linear:{x:0,y:0,z:0}, angular:{x:0,y:0,z:0}});
     vel.publish(v);
 });
-
-camArea.addEventListener('touchstart', function(event){
-    console.log("camera");
-})
