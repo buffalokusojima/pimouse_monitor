@@ -218,6 +218,6 @@ touchArea.addEventListener('touchend',function(event){
     vel.publish(v);
 });
 
-camArea.addEventListener('touched', function(event){
+camArea.addEventListener('touchstart', function(event){
     console.log("camera");
 })
