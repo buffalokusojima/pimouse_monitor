@@ -13,28 +13,6 @@ html, body{
     height:100%;
 }
 
-#moveArea{
-    float: left;
-    position: absolute;
-    bottom: 0%;
-    left: 0%;
-    width: 30%;
-    height: 40%;
-    cursor: pointer;
-    background-color: red;
-}
-
-#cameraArea{
-    float: right;
-    position: absolute;
-    bottom: 0%;
-    right: 0%;
-    width:30%;
-    height: 40%;
-    cursor: pointer;
-    background-color: blue;
-}
-
 #touchArea{
     position: absolute;
     bottom: 0;
