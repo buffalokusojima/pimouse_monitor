@@ -141,9 +141,9 @@ window.addEventListener("orientationchange", function(){
     CAMERA_AREA_SPEED_LOW_MAX = touchAreaX - (touchAreaX - CAMERA_AREA_X_MIDDLE)/2;
     fw=0;
     rot=0;
-    viewArea.data. = "100%";
+    viewArea.data.width = "100%";
     viewArea.style.height = "100%";
-    document.getElementById('testLeft').innerText = "laid,"+touchAreaX+","+touchAreaY;
+    //document.getElementById('testLeft').innerText = "laid,"+touchAreaX+","+touchAreaY;
 });
 
 touchArea.addEventListener('touchstart', function(event){
@@ -169,12 +169,12 @@ touchArea.addEventListener('touchmove',function(event){
 	console.log(event.touches[i].pageX+","+event.touches[i].pageY);
 	var x = event.touches[i].pageX;
     var y = event.touches[i].pageY;
-    document.getElementById('testLeft').innerText = x+","+y+"<br>"+touchAreaX+","+touchAreaY;
+    //document.getElementById('testLeft').innerText = x+","+y+"<br>"+touchAreaX+","+touchAreaY;
 
     //need to think about under the max of the below
 	if(x > 0 && x < MOVE_AREA_X_MAX && TOUCH_AREA_Y < y && y < touchAreaY){
 	    console.log("moveAreaMoving");
-        document.getElementById('testLeft').style.backgroundColor = 'red';
+        //document.getElementById('testLeft').style.backgroundColor = 'red';
         
         if(MOVE_AREA_SPEED_LOW_MIN < y && y < TOUCH_AREA_MIDDLE_Y){
             fw = 30;
@@ -202,13 +202,13 @@ touchArea.addEventListener('touchmove',function(event){
         }else if(CAMERA_AREA_SPEED_LOW_MAX < x){
             rot = -180;
         }
-	    document.getElementById('testRight').style.backgroundColor = 'green';
+	    //document.getElementById('testRight').style.backgroundColor = 'green';
 	}
     }
     fw = parseInt(fw)*0.01;
     rot = 3.141592*parseInt(rot)/180;
 
-    document.getElementById('testRight').innerText = "send Data  fw:"+fw+" rot:"+rot;
+    //document.getElementById('testRight').innerText = "send Data  fw:"+fw+" rot:"+rot;
     
     var v = new ROSLIB.Message({linear:{x:fw,y:0,z:0}, angular:{x:0,y:0,z:rot}});
     vel.publish(v);
@@ -216,8 +216,8 @@ touchArea.addEventListener('touchmove',function(event){
 
 touchArea.addEventListener('touchend',function(event){
     console.log("moveAreaTouched");
-    document.getElementById('testRight').style.backgroundColor = 'white';
-    document.getElementById('testLeft').style.backgroundColor = 'white';
+    //document.getElementById('testRight').style.backgroundColor = 'white';
+    //document.getElementById('testLeft').style.backgroundColor = 'white';
     fw = 0;
     rot = 0;
     var v = new ROSLIB.Message({linear:{x:0,y:0,z:0}, angular:{x:0,y:0,z:0}});
