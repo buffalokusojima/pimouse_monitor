@@ -43,3 +43,7 @@ html, body{
     background:linear-gradient(90deg,blue 0%,blue 40%, white 40%, white 60%, red 60%,red 100%);
     cursor: pointer;
 }
+
+#camstream{
+    position: absolute;
+}
