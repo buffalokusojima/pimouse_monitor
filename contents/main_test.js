@@ -141,7 +141,7 @@ window.addEventListener("orientationchange", function(){
     CAMERA_AREA_SPEED_LOW_MAX = touchAreaX - (touchAreaX - CAMERA_AREA_X_MIDDLE)/2;
     fw=0;
     rot=0;
-    viewArea.style.width = "100%";
+    viewArea.data. = "100%";
     viewArea.style.height = "100%";
     document.getElementById('testLeft').innerText = "laid,"+touchAreaX+","+touchAreaY;
 });
