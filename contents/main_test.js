@@ -76,9 +76,6 @@ var viewArea = document.getElementById('camstream')
 viewArea.data = 'http://'                                                                                                                                     
     + location.hostname                                                                                                                                                                          
     + ':10000/stream?topic=/cv_camera_node/image_raw';   
-    
-viewArea.style.width = "100%";
-viewArea.style.height = "100%";
 
 /*
 var imageNr = 0;
@@ -141,8 +138,6 @@ window.addEventListener("orientationchange", function(){
     CAMERA_AREA_SPEED_LOW_MAX = touchAreaX - (touchAreaX - CAMERA_AREA_X_MIDDLE)/2;
     fw=0;
     rot=0;
-    viewArea.data.width = "100%";
-    viewArea.style.height = "100%";
     //document.getElementById('testLeft').innerText = "laid,"+touchAreaX+","+touchAreaY;
 });
 
