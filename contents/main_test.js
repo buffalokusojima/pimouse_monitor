@@ -174,7 +174,7 @@ touchArea.addEventListener('touchmove',function(event){
             fw = 30;
         }else if(TOUCH_AREA_MIDDLE_Y < y && y < MOVE_AREA_X_MAX){
             fw = -30;
-        }else if(y < MOVE_AREA_X_MIX){
+        }else if(y < MOVE_AREA_X_MIN){
             fw = 50;
         }else if(MOVE_AREA_X_MAX < y){
             fw = -50;
