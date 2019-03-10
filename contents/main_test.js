@@ -105,7 +105,7 @@ document.addEventListener('touchmove', function(e) {e.preventDefault();}, {passi
 
 const imageURL = "http://" + location.hostname + ":10000/stream?topic=/cv_camera_node/image_raw";
 var content = document.getElementById('container');
-content.style.backgroundImage = "url('http://192.168.0.17:10000/stream?topic=/cv_camera_node/image_raw')";
+//content.style.backgroundImage = "url('http://192.168.0.17:10000/stream?topic=/cv_camera_node/image_raw')";
 
 var touchArea = document.getElementById('touchArea');
 
