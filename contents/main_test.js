@@ -76,7 +76,6 @@ var viewArea = document.getElementById('camstream')
 viewArea.data = 'http://'                                                                                                                                     
     + location.hostname                                                                                                                                                                          
     + ':10000/stream?topic=/cv_camera_node/image_raw';   
-
 /*
 var imageNr = 0;
 var finished = new Array();
