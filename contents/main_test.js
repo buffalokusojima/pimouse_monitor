@@ -126,7 +126,7 @@ window.addEventListener("orientationchange", function(){
     touchAreaRect = touchArea.getBoundingClientRect();
     touchAreaX = touchAreaRect.width;
     touchAreaY = touchAreaRect.top + touchAreaRect.height;
-    MOVE_AREA_X_MIX = touchAreaX * 0.4;
+    MOVE_AREA_X_MAX = touchAreaX * 0.4;
     CAMERA_AREA_X_MIN = touchAreaX * 0.6;
     TOUCH_AREA_Y = touchAreaY * 0.6;
     TOUCH_AREA_MIDDLE_Y = TOUCH_AREA_Y + (touchAreaY - TOUCH_AREA_Y)/2;
@@ -174,7 +174,7 @@ touchArea.addEventListener('touchmove',function(event){
             fw = 30;
         }else if(TOUCH_AREA_MIDDLE_Y < y && y < MOVE_AREA_X_MAX){
             fw = -30;
-        }else if(y < MOVE_AREA_X_MIN){
+        }else if(y < MOVE_AREA_SPEED_LOW_MIN){
             fw = 50;
         }else if(MOVE_AREA_X_MAX < y){
             fw = -50;
