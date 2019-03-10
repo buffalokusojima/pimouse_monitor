@@ -75,7 +75,7 @@ setInterval(pubMotorValues,100);
 var viewArea = document.getElementById('camstream')
 viewArea.data = 'http://'                                                                                                                                     
     + location.hostname                                                                                                                                                                          
-    + ':10000/stream?topic=/cv_camera_node/image_raw';   
+    + ':10000/stream?topic=/cv_camera_node/image_raw';
 /*
 var imageNr = 0;
 var finished = new Array();
@@ -168,7 +168,7 @@ touchArea.addEventListener('touchmove',function(event){
     //need to think about under the max of the below
 	if(x > 0 && x < MOVE_AREA_X_MAX && TOUCH_AREA_Y < y && y < touchAreaY){
 	    console.log("moveAreaMoving");
-        //document.getElementById('testLeft').style.backgroundColor = 'red';
+        document.getElementById('testLeft').style.backgroundColor = 'red';
         
         if(MOVE_AREA_SPEED_LOW_MIN < y && y < TOUCH_AREA_MIDDLE_Y){
             fw = 30;
@@ -196,7 +196,7 @@ touchArea.addEventListener('touchmove',function(event){
         }else if(CAMERA_AREA_SPEED_LOW_MAX < x){
             rot = -180;
         }
-	    //document.getElementById('testRight').style.backgroundColor = 'green';
+	    document.getElementById('testRight').style.backgroundColor = 'green';
 	}
     }
     fw = parseInt(fw)*0.01;
