@@ -70,7 +70,7 @@ $('#touchmotion').on('click', function(e){
 });
 
 setInterval(pubMotorValues,100);
-*/
+
 
 var viewArea = document.getElementById('camstream')
 viewArea.data = 'http://'                                                                                                                                     
@@ -102,6 +102,10 @@ function imageOnload() {
 
 //scrole forbitten
 document.addEventListener('touchmove', function(e) {e.preventDefault();}, {passive: false});
+
+const imageURL = "http://" + location.hostname + ":10000/stream?topic=/cv_camera_node/image_raw";
+var content = document.getElementById('container');
+content.style.backgroundImage = "url('"+imageURL+"')";
 
 var touchArea = document.getElementById('touchArea');
 
