@@ -9,9 +9,9 @@ html, body{
 
 #container{
     position: relative;
-    background-image: url(http://192.168.0.17:10000/stream?topic=/cv_camera_node/image_raw);
     width:100%;
     height:100%;
+    background-image: url("http://192.168.0.17:10000/stream?topic=/cv_camera_node/image_raw");
 }
 
 #touchArea{
