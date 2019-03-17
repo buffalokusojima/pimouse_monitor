@@ -70,7 +70,6 @@ $('#touchmotion').on('click', function(e){
 });
 
 setInterval(pubMotorValues,100);
-*/
 
 var viewArea = document.getElementById('camstream')
 viewArea.data = 'http://'                                                                                                                                     
