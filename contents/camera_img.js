@@ -158,9 +158,6 @@ touchArea.addEventListener('touchstart', function(event){
 	    console.log("cameraArea");
 	}
     }
-    
-    var v = new ROSLIB.Message({linear:{x:0.1,y:0,z:0}, angular:{x:0,y:0,z:0}});
-    vel.publish(v);
 });
 
 touchArea.addEventListener('touchmove',function(event){
@@ -221,5 +218,5 @@ touchArea.addEventListener('touchend',function(event){
     fw = 0;
     rot = 0;
     var v = new ROSLIB.Message({linear:{x:0,y:0,z:0}, angular:{x:0,y:0,z:0}});
-    //vel.publish(v);
+    vel.publish(v);
 });
