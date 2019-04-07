@@ -207,16 +207,19 @@ touchArea.addEventListener('touchmove',function(event){
 
     //document.getElementById('testRight').innerText = "send Data  fw:"+fw+" rot:"+rot;
     
-    var v = new ROSLIB.Message({linear:{x:fw,y:0,z:0}, angular:{x:0,y:0,z:rot}});
-    vel.publish(v);
+    sendData(fw,rot);
 });
 
 touchArea.addEventListener('touchend',function(event){
     console.log("moveAreaTouched");
     //document.getElementById('testRight').style.backgroundColor = 'white';
     //document.getElementById('testLeft').style.backgroundColor = 'white';
-    fw = 0;
-    rot = 0;
-    var v = new ROSLIB.Message({linear:{x:0,y:0,z:0}, angular:{x:0,y:0,z:0}});
-    vel.publish(v);
+    sendData(0,0);
 });
+
+function sendData(localFw, localRot){
+    if(fw != localFw && rot != localRot){
+        var v = new ROSLIB.Message({linear:{x:localFw,y:0,z:0}, angular:{x:0,y:0,z:localRot}});
+        vel.publish(v);
+    }
+}
