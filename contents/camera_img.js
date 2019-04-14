@@ -124,6 +124,7 @@ var CAMERA_AREA_SPEED_LOW_MAX = touchAreaX - (touchAreaX - CAMERA_AREA_X_MIDDLE)
 var fw=0;
 var rot=0;
 
+
 // show px of x and y when iphone laid
 window.addEventListener("orientationchange", function(){
     touchAreaRect = touchArea.getBoundingClientRect();
